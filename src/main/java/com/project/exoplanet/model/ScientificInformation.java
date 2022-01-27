@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class ScientificInformation {
    
@@ -16,6 +18,7 @@ public class ScientificInformation {
 	private String nome;
 	private Integer numeroDeLuas;
 	private String tipoPlaneta;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy")
 	private Date dataLancamento;
 	private String proximos;
 			
