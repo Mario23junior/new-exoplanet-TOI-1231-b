@@ -1,5 +1,7 @@
 package com.project.exoplanet.Service;
 
+import java.util.Optional;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +43,14 @@ public class ServiceSubNoturno {
 		}
 	}
     
+    public ResponseEntity<SubNoturnoDTO> listId(Long id) {
+    	Optional<SubNoturno> listId = repository.findById(id);
+    	if(listId.isPresent()) {
+    		return ResponseEntity.ok(mapper.map(listId.get(), SubNoturnoDTO.class));
+    	} else {
+    		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    	}
+    }
  }
 
 
