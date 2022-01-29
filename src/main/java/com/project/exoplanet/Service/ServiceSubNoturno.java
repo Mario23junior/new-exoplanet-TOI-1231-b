@@ -51,6 +51,33 @@ public class ServiceSubNoturno {
     		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     	}
     }
+    
+
+    
+    public ResponseEntity<SubNoturnoDTO> updateInfo(Long id,SubNoturnoDTO scincDto){
+		Optional<SubNoturno> data = repository.findById(id);
+		if(data.isPresent()) {
+			SubNoturno info = data.get();
+			info.setMassa(scincDto.getMassa());
+			info.setOrbitalRadius(scincDto.getOrbitalRadius());
+			info.setPeriodoOrbital(scincDto.getPeriodoOrbital());
+			info.setEcentricidade(scincDto.getEcentricidade());
+			repository.save(info);
+			return ResponseEntity.ok(mapper.map(info, SubNoturnoDTO.class));
+		} else {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+	}
+	
+    
+    
+    
+    
+    
+    
+    
+    
+    
  }
 
 
