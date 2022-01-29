@@ -29,7 +29,7 @@ public class ControllerScienceInformation {
 	}
 
     @GetMapping("{id}")
-    public ResponseEntity<ScienceInforDTO> list(@PathVariable Long id) {
+    public ResponseEntity<ScienceInforDTO> list( @PathVariable Long id) {
     	return service.listId(id);
     }
     
