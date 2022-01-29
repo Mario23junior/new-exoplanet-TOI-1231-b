@@ -37,6 +37,11 @@ public class ControllerSubNoturno {
 	public ResponseEntity<SubNoturnoDTO> update(@PathVariable Long id, @RequestBody SubNoturnoDTO subNotDto) {
 		return service.updateInfo(id, subNotDto);
 	}
+	
+	@DeleteMapping("{id}")
+	public ResponseEntity<SubNoturnoDTO> delete(@PathVariable Long id) {
+		return service.delete(id);
+	}
 }
 
 
