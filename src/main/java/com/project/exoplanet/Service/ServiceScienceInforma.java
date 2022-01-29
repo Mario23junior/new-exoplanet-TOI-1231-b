@@ -51,6 +51,34 @@ public class ServiceScienceInforma {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 	}
+	
+	public ResponseEntity<ScienceInforDTO> updateInfo(Long id,ScienceInforDTO scincDto){
+		Optional<ScientificInformation> data = scienceIndoReposi.findById(id);
+		if(data.isPresent()) {
+			ScientificInformation info = data.get();
+			info.setNome(scincDto.getNome());
+			info.setNumeroDeLuas(scincDto.getNumeroDeLuas());
+			info.setTipoPlaneta(scincDto.getTipoPlaneta());
+			info.setDataLancamento(scincDto.getDataLancamento());
+			info.setProximos(scincDto.getProximos());
+			scienceIndoReposi.save(info);
+			return ResponseEntity.ok(mapper.map(info, ScienceInforDTO.class));
+		} else {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+	}
+	
+	public ResponseEntity<ScienceInforDTO> delete(Long id) {
+		Optional<ScientificInformation> findId = scienceIndoReposi.findById(id);
+		if(findId.isPresent()) {
+			scienceIndoReposi.delete(findId.get());
+			return new ResponseEntity<>(HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+	}
+	
+	
 }
 
 
