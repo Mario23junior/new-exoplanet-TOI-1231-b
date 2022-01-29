@@ -51,8 +51,7 @@ public class ServiceSubNoturno {
     		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     	}
     }
-    
-
+   
     
     public ResponseEntity<SubNoturnoDTO> updateInfo(Long id,SubNoturnoDTO scincDto){
 		Optional<SubNoturno> data = repository.findById(id);
@@ -68,25 +67,18 @@ public class ServiceSubNoturno {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 	}
-	
     
     
-    
-    
-    
-    
-    
-    
-    
- }
-
-
-
-
-
-
-
-
-
+    public ResponseEntity<SubNoturnoDTO> delete(Long id) {
+    	Optional<SubNoturno> findId = repository.findById(id);
+    	if(findId.isPresent()) {
+            repository.delete(findId.get());
+    		return ResponseEntity.ok(mapper.map(findId, SubNoturnoDTO.class));
+     	} else {
+    		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    	}
+    }
+   
+}
 
 
