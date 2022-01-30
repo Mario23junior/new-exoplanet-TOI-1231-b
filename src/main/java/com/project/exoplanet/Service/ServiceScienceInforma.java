@@ -23,17 +23,16 @@ public class ServiceScienceInforma {
 		this.scienceIndoReposi = scienceIndoReposi;
 	}
 	
-    public ResponseEntity<ScienceInforDTO> saveEntity(ScienceInforDTO scinceInforDTO) {
-    	ScientificInformation bodySave = save(mapper.map(scinceInforDTO, ScientificInformation.class));
-    	return ResponseEntity
-    			        .status(HttpStatus.OK)
-    			        .body(mapper.map(bodySave, ScienceInforDTO.class));
-    }
+	public ScientificInformation saveEntity(ScientificInformation scientificInformation) {
+		ScientificInformation salvardados = scienceIndoReposi.save(scientificInformation);
+		return salvardados;
+ 	}
 	
-    ScientificInformation save(ScientificInformation scientificInformation) {
-    	DonValueDuplicateDate(scientificInformation);
-    	return scienceIndoReposi.save(scientificInformation);
-    }
+	public ScientificInformation saveRes(ScientificInformation scientificInformation) {
+	 DonValueDuplicateDate(scientificInformation);
+	 ScientificInformation save = scienceIndoReposi.save(scientificInformation);
+	   return save;
+	}
     
 	public void DonValueDuplicateDate(ScientificInformation scientificInformation) {
 		ScientificInformation find = scienceIndoReposi.findAllByNome(scientificInformation.getNome());

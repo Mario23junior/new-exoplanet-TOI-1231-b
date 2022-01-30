@@ -1,11 +1,14 @@
 package com.project.exoplanet.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -21,9 +24,20 @@ public class ScientificInformation {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy")
 	private Date dataLancamento;
 	private String proximos;
+	
+	@OneToMany(mappedBy = "scientificInformation", cascade = CascadeType.ALL)
+	List<SubNoturno> subNoturno;
 			
 	public ScientificInformation() {
-		// TODO Auto-generated constructor stub
+		// TODO Auto-generated constructor stu
+	}
+
+	public List<SubNoturno> getSubNoturn() {
+		return subNoturno;
+	}
+
+	public void setSubNoturno(List<SubNoturno> subNoturno) {
+		this.subNoturno = subNoturno;
 	}
 
 	public Long getId() {
