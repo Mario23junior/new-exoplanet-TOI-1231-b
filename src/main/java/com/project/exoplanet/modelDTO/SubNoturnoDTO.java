@@ -1,11 +1,24 @@
 package com.project.exoplanet.modelDTO;
 
+import javax.persistence.ManyToOne;
+
 public class SubNoturnoDTO {
 
 	private Double massa;
 	private String orbitalRadius;
 	private String periodoOrbital;
 	private String ecentricidade;
+
+	@ManyToOne
+	private ScienceInforDTO scienceInforDTO;
+	 
+	public ScienceInforDTO getScienceInforDTO() {
+		return scienceInforDTO;
+	}
+
+	public void setScienceInforDTO(ScienceInforDTO scienceInforDTO) {
+		this.scienceInforDTO = scienceInforDTO;
+	}
 
 	public SubNoturnoDTO() {
 	}

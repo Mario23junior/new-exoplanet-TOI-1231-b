@@ -1,6 +1,10 @@
 package com.project.exoplanet.modelDTO;
 
 import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
 
 public class ScienceInforDTO {
 
@@ -9,6 +13,17 @@ public class ScienceInforDTO {
 	private String tipoPlaneta;
 	private Date dataLancamento;
 	private String proximos;
+
+	@OneToMany(mappedBy = "scientificInformationDTO", cascade = CascadeType.ALL)
+	List<SubNoturnoDTO> subNoturnoDTO;
+	
+	public List<SubNoturnoDTO> getSubNoturnDTO() {
+		return subNoturnoDTO;
+	}
+
+	public void setSubNoturnoDTO(List<SubNoturnoDTO> subNoturnoDTO) {
+		this.subNoturnoDTO = subNoturnoDTO;
+	}
 
 	public ScienceInforDTO() {
 	}

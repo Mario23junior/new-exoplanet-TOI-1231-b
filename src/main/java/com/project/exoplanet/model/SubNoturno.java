@@ -4,10 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class SubNoturno {
-  
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -15,10 +16,22 @@ public class SubNoturno {
 	private String orbitalRadius;
 	private String periodoOrbital;
 	private String ecentricidade;
-	
+
+	@ManyToOne
+	private ScientificInformation scientificInformation;
+
 	public SubNoturno() {
-		// TODO Auto-generated constructor stub
 	}
+	
+	public ScientificInformation getScientificInformation() {
+		return scientificInformation;
+	}
+
+
+	public void setScientificInformation(ScientificInformation scientificInformation) {
+		this.scientificInformation = scientificInformation;
+	}
+
 
 	public Long getId() {
 		return id;
@@ -59,7 +72,4 @@ public class SubNoturno {
 	public void setEcentricidade(String ecentricidade) {
 		this.ecentricidade = ecentricidade;
 	}
-	
-	
- 
 }

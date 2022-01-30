@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.exoplanet.Service.ServiceScienceInforma;
+import com.project.exoplanet.model.ScientificInformation;
 import com.project.exoplanet.modelDTO.ScienceInforDTO;
 
 @RestController
@@ -24,7 +25,7 @@ public class ControllerScienceInformation {
 	}
 	
 	@PostMapping
-	public ResponseEntity<ScienceInforDTO> save(@RequestBody ScienceInforDTO scienceInformation ) {
+	public ScientificInformation save(@RequestBody ScientificInformation scienceInformation ) {
 		return service.saveEntity(scienceInformation);
 	}
 
