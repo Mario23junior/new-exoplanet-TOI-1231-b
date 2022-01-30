@@ -1,4 +1,4 @@
-<p align="center"><img src="img/logo.gif" width = "2281px" height="633px"></p>
+<p align="center"><img src="img/logo.gif" width = "2281px" height="523px"></p>
 
 <h1 align="center">TOI-1231-B</h1>
 
@@ -19,7 +19,7 @@ API REST de código aberto para dados de consulta de  pesquisa  as informaçõ
 ```
 ## Em seguida faça
 ```
-java -jar target/TOI-1231-b-API-1.0-SNAPSHOT.jar
+java -jar exoplanet-0.0.1-SNAPSHOT.jar
 
 ```
 ## Uso
